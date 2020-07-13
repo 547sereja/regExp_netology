@@ -22,8 +22,8 @@ def make_correct_names(contacts_list):
 def make_correct_phone_numbers(contacts_list):
     formated_phone_list = []
     pattern = re.compile(
-      r'(\+7|8)\s*\(?(\d{3})\)?(\s*|-)(\d{3})(\s*|-*)(\d{2})-?(\d{2})(\s*)')
-    replace_phone_numbers = r'+7(\2)\4-\6-\7'
+      r'(\+7|8)\s*\(?(\d{3})\)?(\s*|-)(\d{3})(\s*|-*)(\d{2})-?(\d{2})\s*(\(?(доб\.)\s*(\d+)\)?)?')
+    replace_phone_numbers = r'+7(\2)\4-\6-\7 \9\10'
     for people in contacts_list:
       people = ",".join(people)
       result = pattern.sub(replace_phone_numbers, people)
